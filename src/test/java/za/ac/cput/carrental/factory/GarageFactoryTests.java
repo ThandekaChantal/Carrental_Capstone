@@ -10,7 +10,7 @@ public class GarageFactoryTests {
         Garage garage = GarageFactory.createGarage(
                 "G001",
                 "Cape Town Central Garage",
-                "10 Main Road",
+                "101 Main Road",
                 "Cape Town",
                 "Sima Buthelezi"
         );
@@ -18,7 +18,7 @@ public class GarageFactoryTests {
         assertNotNull(garage);
         assertNotNull(garage.getGarageId());
         assertEquals("Cape Town Central Garage", garage.getGarageName());
-        assertEquals("10 Main Road", garage.getAddress());
+        assertEquals("101 Main Road", garage.getAddress());
         assertEquals("Cape Town", garage.getCity());
         assertEquals("Sima Buthelezi", garage.getManagerName());
 
