@@ -6,14 +6,30 @@
 
 package za.ac.cput.carrental.domain;
 
-import java.time.LocalDate;
+import jakarta.persistence.*;
 
+import java.time.LocalDate;
+@Entity
+@Table(name = "booking")
 public class Booking {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "booking_id",  nullable = false)
     private String bookingId;
+
+    @Column(name = "member_id", nullable = false)
     private String memberId;
+
+    @Column(name = "car_id", nullable = false)
     private String carId;
+
+    @Column(name = "start_date",  nullable = false)
     private String startDate;
+
+    @Column(name = "end_date",   nullable = false)
     private String endDate;
+
+    @Column(name = "totalCost",  nullable = false)
     private double totalCost;
 
     protected Booking() {

@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+import java.util.UUID;
 
 
 public class Helper {
@@ -62,5 +63,9 @@ public class Helper {
 
     public static boolean isValidList(List<?> list) {
         return list != null && !list.isEmpty();
+    }
+
+    public static String generateId() {
+        return UUID.randomUUID().toString();
     }
 }

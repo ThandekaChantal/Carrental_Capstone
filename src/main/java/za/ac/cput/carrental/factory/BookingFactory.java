@@ -1,5 +1,5 @@
-/*Author: Tanatswa Mabhodha
-Student No: 220637482
+/*BookingFactory.java
+Author: Tanatswa Mabhodha 220637482
 Date: 27/06/2026
 
  */
@@ -10,12 +10,29 @@ package za.ac.cput.carrental.factory;
 import za.ac.cput.carrental.domain.Booking;
 import za.ac.cput.carrental.util.Helper;
 
+import java.time.LocalDate;
+
 public class BookingFactory {
     public static Booking createBooking(String memberId,
                                         String carId,
                                         String startDate,
                                         String endDate,
                                         double totalCost){
+
+        if(memberId ==null || memberId.isEmpty())
+            return null;
+        if(carId == null || carId.isEmpty())
+            return null;
+        if(startDate == null || startDate.isEmpty())
+            return null;
+        LocalDate localDate = LocalDate.parse(startDate);
+        LocalDate localEndDate = LocalDate.parse(endDate);
+        if(localDate.isBefore(localEndDate))
+            return null;
+        if(totalCost < 0)
+            return null;
+
+
         return new Booking.Builder()
                 .setBookingId(Helper.generateId())
                 .setMemberId(memberId)
