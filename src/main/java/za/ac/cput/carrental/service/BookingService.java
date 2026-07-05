@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.carrental.domain.Booking;
 import za.ac.cput.carrental.factory.BookingFactory;
+import za.ac.cput.carrental.repository.BookingRepository;
+
 import java.util.List;
 
 @Service
