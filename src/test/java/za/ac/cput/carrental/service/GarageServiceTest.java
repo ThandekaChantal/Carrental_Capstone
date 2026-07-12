@@ -7,7 +7,7 @@ import za.ac.cput.carrental.factory.GarageFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-/*
+/* GarageServiceTest
  * Author: SE MACHAULE (222359366)
  * Date: 12 June 2026
  */

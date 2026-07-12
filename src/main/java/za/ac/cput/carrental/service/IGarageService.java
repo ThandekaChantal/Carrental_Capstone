@@ -2,6 +2,7 @@ package za.ac.cput.carrental.service;
 import za.ac.cput.carrental.domain.Garage;
 import java.util.List;
 
+
 public interface IGarageService {
 
     Garage create(String garageId,

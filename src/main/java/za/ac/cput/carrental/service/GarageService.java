@@ -8,7 +8,7 @@ import za.ac.cput.carrental.repository.GarageRepository;
 
 import java.util.List;
 /*
- *
+ * GarageService
  * Author: SE MACHAULE (222359366)
  * Date: 12 June 2026
  */
