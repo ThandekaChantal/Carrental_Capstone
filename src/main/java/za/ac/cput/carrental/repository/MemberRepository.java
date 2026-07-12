@@ -1,4 +1,9 @@
 package za.ac.cput.carrental.repository;
 
-public interface MemberRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import za.ac.cput.carrental.domain.Member;
+
+@Repository
+public interface MemberRepository extends JpaRepository<Member, String> {
 }
