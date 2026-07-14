@@ -27,7 +27,7 @@ public class Garage {
     @Transient
     private List<Car> cars;
 
-    private Garage() {
+    protected Garage() {
     }
 
     private Garage(Builder builder) {
