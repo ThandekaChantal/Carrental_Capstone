@@ -15,7 +15,7 @@ public class CarService implements ICarSerivce{
 private  CarRepository CAR ;
 
     @Override
-    public Car craete(Car car) {
+    public Car create(Car car) {
         return this.CAR.save(car);
     }
 

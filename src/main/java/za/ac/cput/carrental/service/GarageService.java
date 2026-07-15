@@ -22,7 +22,7 @@ public class GarageService implements IGarageService {
 
 
     @Override
-    public Garage craete(Garage garage) {
+    public Garage create(Garage garage) {
         return this.garage.save(garage);
     }
 

@@ -28,7 +28,7 @@ public class PaymentServiceTest {
     @Test
     @Order(1)
     void create() {
-        Payment created = paymentService.craete(payment);
+        Payment created = paymentService.create(payment);
         assertNotNull(created);
         assertEquals(payment.getPaymentId(), created.getPaymentId());
         System.out.println("Created: " + created);

@@ -20,7 +20,7 @@ public class MemberService implements IMemberService {
     private  MemberRepository member;
 
     @Override
-    public Member craete(Member member) {
+    public Member create(Member member) {
         return this.member.save(member);
     }
 

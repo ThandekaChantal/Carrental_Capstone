@@ -22,7 +22,7 @@ private InsuranceRepository insurance;
 
 
     @Override
-    public Insurance craete(Insurance insurance) {
+    public Insurance create(Insurance insurance) {
         return this.insurance.save(insurance);
     }
 

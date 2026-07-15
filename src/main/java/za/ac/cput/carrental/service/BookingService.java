@@ -20,7 +20,7 @@ import java.util.List;
 private  BookingRepository booking ;
 
     @Override
-    public Booking craete(Booking booking) {
+    public Booking create(Booking booking) {
         return this.booking.save(booking);
     }
 
