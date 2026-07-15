@@ -12,7 +12,7 @@ public class PaymentService implements IPaymentService{
 
 
     @Override
-    public Payment craete(Payment payment) {
+    public Payment create(Payment payment) {
         return this.payment.save(payment);
     }
 
