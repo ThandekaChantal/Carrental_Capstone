@@ -1,4 +1,6 @@
 package za.ac.cput.carrental.service;
 
-public interface IPaymentService {
+import za.ac.cput.carrental.domain.Payment;
+
+public interface IPaymentService extends Iservice<Payment, String> {
 }
