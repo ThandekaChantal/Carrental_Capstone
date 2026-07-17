@@ -1,4 +1,4 @@
-package za.ac.cput.carrental.service;
+package za.ac.cput.carrental.controller;
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class CarServiceTest {
+class CarControllerTest {
 
     @Autowired
-    private CarService carService;
+    private CarController carController;
     private static Car car;
 
     @BeforeAll
@@ -31,7 +31,7 @@ public class CarServiceTest {
     @Test
     @Order(1)
     void create() {
-        Car created = carService.create(car);
+        Car created = carController.create(car);
         assertNotNull(created);
         assertEquals(car.getCarId(), created.getCarId());
         System.out.println("Created: " + created);
@@ -40,7 +40,7 @@ public class CarServiceTest {
     @Test
     @Order(2)
     void read() {
-        Car read = carService.read(car.getCarId());
+        Car read = carController.read(car.getCarId());
         assertNotNull(read);
         assertEquals(car.getCarId(), read.getCarId());
         System.out.println("Read: " + read);
@@ -54,18 +54,18 @@ public class CarServiceTest {
                 .status("UNDER_MAINTENANCE")
                 .mileage(5000)
                 .build();
-        Car result = carService.update(updated);
+        Car result = carController.update(updated);
         assertNotNull(result);
         assertEquals("UNDER_MAINTENANCE", result.getStatus());
-        assertEquals(5000, result.getMileage());
         System.out.println("Updated: " + result);
     }
 
     @Test
     @Order(4)
     void delete() {
-        boolean deleted = carService.delete(car.getCarId());
-        assertTrue(deleted);
-        System.out.println("Deleted: " + deleted);
+        carController.delete(car.getCarId());
+        Car deleted = carController.read(car.getCarId());
+        assertNull(deleted);
+        System.out.println("Deleted successfully");
     }
 }

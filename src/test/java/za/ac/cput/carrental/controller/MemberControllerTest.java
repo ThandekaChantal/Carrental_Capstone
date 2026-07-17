@@ -1,4 +1,4 @@
-package za.ac.cput.carrental.service;
+package za.ac.cput.carrental.controller;
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class MemberServiceTest {
+class MemberControllerTest {
 
     @Autowired
-    private MemberService memberService;
+    private MemberController memberController;
     private static Member member;
 
     @BeforeAll
@@ -29,7 +29,7 @@ public class MemberServiceTest {
     @Test
     @Order(1)
     void create() {
-        Member created = memberService.create(member);
+        Member created = memberController.create(member);
         assertNotNull(created);
         assertEquals(member.getMemberId(), created.getMemberId());
         System.out.println("Created: " + created);
@@ -38,7 +38,7 @@ public class MemberServiceTest {
     @Test
     @Order(2)
     void read() {
-        Member read = memberService.read(member.getMemberId());
+        Member read = memberController.read(member.getMemberId());
         assertNotNull(read);
         assertEquals(member.getMemberId(), read.getMemberId());
         System.out.println("Read: " + read);
@@ -51,7 +51,7 @@ public class MemberServiceTest {
                 .copy(member)
                 .setAccountStatus("Inactive")
                 .build();
-        Member result = memberService.update(updated);
+        Member result = memberController.update(updated);
         assertNotNull(result);
         assertEquals("Inactive", result.getAccountStatus());
         System.out.println("Updated: " + result);
@@ -60,8 +60,9 @@ public class MemberServiceTest {
     @Test
     @Order(4)
     void delete() {
-        boolean deleted = memberService.delete(member.getMemberId());
-        assertTrue(deleted);
-        System.out.println("Deleted: " + deleted);
+        memberController.delete(member.getMemberId());
+        Member deleted = memberController.read(member.getMemberId());
+        assertNull(deleted);
+        System.out.println("Deleted successfully");
     }
 }
