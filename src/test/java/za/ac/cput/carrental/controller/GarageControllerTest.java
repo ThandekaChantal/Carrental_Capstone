@@ -1,4 +1,4 @@
-package za.ac.cput.carrental.service;
+package za.ac.cput.carrental.controller;
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class GarageServiceTest {
+class GarageControllerTest {
 
     @Autowired
-    private GarageService garageService;
+    private GarageController garageController;
     private static Garage garage;
 
     @BeforeAll
@@ -29,7 +29,7 @@ public class GarageServiceTest {
     @Test
     @Order(1)
     void create() {
-        Garage created = garageService.create(garage);
+        Garage created = garageController.create(garage);
         assertNotNull(created);
         assertEquals(garage.getGarageId(), created.getGarageId());
         System.out.println("Created: " + created);
@@ -38,7 +38,7 @@ public class GarageServiceTest {
     @Test
     @Order(2)
     void read() {
-        Garage read = garageService.read(garage.getGarageId());
+        Garage read = garageController.read(garage.getGarageId());
         assertNotNull(read);
         assertEquals(garage.getGarageId(), read.getGarageId());
         System.out.println("Read: " + read);
@@ -51,7 +51,7 @@ public class GarageServiceTest {
                 .copy(garage)
                 .setManagerName("John Dlamini")
                 .build();
-        Garage result = garageService.update(updated);
+        Garage result = garageController.update(updated);
         assertNotNull(result);
         assertEquals("John Dlamini", result.getManagerName());
         System.out.println("Updated: " + result);
@@ -60,8 +60,9 @@ public class GarageServiceTest {
     @Test
     @Order(4)
     void delete() {
-        boolean deleted = garageService.delete(garage.getGarageId());
-        assertTrue(deleted);
-        System.out.println("Deleted: " + deleted);
+        garageController.delete(garage.getGarageId());
+        Garage deleted = garageController.read(garage.getGarageId());
+        assertNull(deleted);
+        System.out.println("Deleted successfully");
     }
 }

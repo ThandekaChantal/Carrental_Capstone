@@ -1,4 +1,4 @@
-package za.ac.cput.carrental.service;
+package za.ac.cput.carrental.controller;
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class BookingServiceTest {
+class BookingControllerTest {
 
     @Autowired
-    private BookingService bookingService;
+    private BookingController bookingController;
     private static Booking booking;
 
     @BeforeAll
@@ -30,7 +30,7 @@ public class BookingServiceTest {
     @Test
     @Order(1)
     void create() {
-        Booking created = bookingService.create(booking);
+        Booking created = bookingController.create(booking);
         assertNotNull(created);
         assertEquals(booking.getBookingId(), created.getBookingId());
         System.out.println("Created: " + created);
@@ -39,7 +39,7 @@ public class BookingServiceTest {
     @Test
     @Order(2)
     void read() {
-        Booking read = bookingService.read(booking.getBookingId());
+        Booking read = bookingController.read(booking.getBookingId());
         assertNotNull(read);
         assertEquals(booking.getBookingId(), read.getBookingId());
         System.out.println("Read: " + read);
@@ -53,7 +53,7 @@ public class BookingServiceTest {
                 .setEndDate("2026-09-10")
                 .setTotalCost(2250.00)
                 .build();
-        Booking result = bookingService.update(updated);
+        Booking result = bookingController.update(updated);
         assertNotNull(result);
         assertEquals("2026-09-10", result.getEndDate());
         System.out.println("Updated: " + result);
@@ -62,8 +62,9 @@ public class BookingServiceTest {
     @Test
     @Order(4)
     void delete() {
-        boolean deleted = bookingService.delete(booking.getBookingId());
-        assertTrue(deleted);
-        System.out.println("Deleted: " + deleted);
+        bookingController.delete(booking.getBookingId());
+        Booking deleted = bookingController.read(booking.getBookingId());
+        assertNull(deleted);
+        System.out.println("Deleted successfully");
     }
 }

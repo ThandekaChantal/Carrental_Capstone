@@ -6,7 +6,7 @@ import za.ac.cput.carrental.domain.Payment;
 import za.ac.cput.carrental.service.PaymentService;
 
 @RestController
-@RequestMapping
+@RequestMapping("/payment")
 public class PaymentController {
     @Autowired
     private PaymentService payment;
