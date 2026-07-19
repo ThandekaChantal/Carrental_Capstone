@@ -1,5 +1,9 @@
 package za.ac.cput.carrental.controller;
 
+/* CarController.java
+     CarController Class
+     Author: Malwandla Blessing Mahori (230962963)
+     Date 17 July 2026 */
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

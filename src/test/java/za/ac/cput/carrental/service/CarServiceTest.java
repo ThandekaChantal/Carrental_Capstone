@@ -1,5 +1,10 @@
 package za.ac.cput.carrental.service;
 
+/* CarService.java
+     Car Service
+     Author: Malwandla Blessing Mahori (230962963)
+     Date: 10 July 2026 */
+
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
