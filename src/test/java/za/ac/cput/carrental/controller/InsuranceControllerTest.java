@@ -1,4 +1,4 @@
-package za.ac.cput.carrental.service;
+package za.ac.cput.carrental.controller;
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class InsuranceServiceTest {
+class InsuranceControllerTest {
 
     @Autowired
-    private InsuranceService insuranceService;
+    private InsuranceController insuranceController;
     private static Insurance insurance;
 
     @BeforeAll
@@ -28,7 +28,7 @@ public class InsuranceServiceTest {
     @Test
     @Order(1)
     void create() {
-        Insurance created = insuranceService.create(insurance);
+        Insurance created = insuranceController.create(insurance);
         assertNotNull(created);
         assertEquals(insurance.getInsuranceId(), created.getInsuranceId());
         System.out.println("Created: " + created);
@@ -37,7 +37,7 @@ public class InsuranceServiceTest {
     @Test
     @Order(2)
     void read() {
-        Insurance read = insuranceService.read(insurance.getInsuranceId());
+        Insurance read = insuranceController.read(insurance.getInsuranceId());
         assertNotNull(read);
         assertEquals(insurance.getInsuranceId(), read.getInsuranceId());
         System.out.println("Read: " + read);
@@ -48,20 +48,21 @@ public class InsuranceServiceTest {
     void update() {
         Insurance updated = new Insurance.Builder()
                 .copy(insurance)
-                .setDailyPremium(200.00)
                 .setType("Third Party")
+                .setDailyPremium(80.00)
                 .build();
-        Insurance result = insuranceService.update(updated);
+        Insurance result = insuranceController.update(updated);
         assertNotNull(result);
-        assertEquals(200.00, result.getDailyPremium());
+        assertEquals("Third Party", result.getType());
         System.out.println("Updated: " + result);
     }
 
     @Test
     @Order(4)
     void delete() {
-        boolean deleted = insuranceService.delete(insurance.getInsuranceId());
-        assertTrue(deleted);
-        System.out.println("Deleted: " + deleted);
+        insuranceController.delete(insurance.getInsuranceId());
+        Insurance deleted = insuranceController.read(insurance.getInsuranceId());
+        assertNull(deleted);
+        System.out.println("Deleted successfully");
     }
 }

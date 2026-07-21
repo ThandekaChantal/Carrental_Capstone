@@ -1,4 +1,4 @@
-package za.ac.cput.carrental.service;
+package za.ac.cput.carrental.controller;
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+class PaymentControllerTest {
 
-public class PaymentServiceTest {
-@Autowired
-    private PaymentService paymentService;
+    @Autowired
+    private PaymentController paymentController;
     private static Payment payment;
+
     @BeforeAll
     static void setUp() {
         payment = new Payment.Builder()
@@ -28,7 +29,7 @@ public class PaymentServiceTest {
     @Test
     @Order(1)
     void create() {
-        Payment created = paymentService.create(payment);
+        Payment created = paymentController.create(payment);
         assertNotNull(created);
         assertEquals(payment.getPaymentId(), created.getPaymentId());
         System.out.println("Created: " + created);
@@ -37,7 +38,7 @@ public class PaymentServiceTest {
     @Test
     @Order(2)
     void read() {
-        Payment read = paymentService.read(payment.getPaymentId());
+        Payment read = paymentController.read(payment.getPaymentId());
         assertNotNull(read);
         assertEquals(payment.getPaymentId(), read.getPaymentId());
         System.out.println("Read: " + read);
@@ -51,7 +52,7 @@ public class PaymentServiceTest {
                 .setAmount(2000.00)
                 .setMethod("EFT")
                 .build();
-        Payment result = paymentService.update(updated);
+        Payment result = paymentController.update(updated);
         assertNotNull(result);
         assertEquals(2000.00, result.getAmount());
         System.out.println("Updated: " + result);
@@ -60,9 +61,9 @@ public class PaymentServiceTest {
     @Test
     @Order(4)
     void delete() {
-        boolean deleted = paymentService.delete(payment.getPaymentId());
-        assertTrue(deleted);
-        System.out.println("Deleted: " + deleted);
+        paymentController.delete(payment.getPaymentId());
+        Payment deleted = paymentController.read(payment.getPaymentId());
+        assertNull(deleted);
+        System.out.println("Deleted successfully");
     }
-
 }
