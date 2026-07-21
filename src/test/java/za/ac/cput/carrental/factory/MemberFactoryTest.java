@@ -1,3 +1,9 @@
+/*MemberServiceTest.java
+Author: Stephanie Tola Oluwafemi Lewu
+Student Number: 230211216
+20 July 2026
+ */
+
 package za.ac.cput.carrental.factory;
 
 import org.junit.jupiter.api.Test;
@@ -11,13 +17,14 @@ public class MemberFactoryTest {
     @Test
     void testCreateMemberBooking_Success(){
         Member member = MemberFactory.createMember(
+                "A001",
                 "Stephanie Lewu",
                 "STOL230211",
                 "0665119940",
                 "ACTIVE"
         );
         assertNotNull(member);
-        assertNotNull(member.getMemberId());
+        assertNotNull("A001",member.getMemberId());
         assertEquals("Stephanie Lewu",member.getName());
         assertEquals("STOL230211" ,member.getLicenseNumber());
         assertEquals("0665119940" ,member.getPhoneNumber());
@@ -27,6 +34,7 @@ public class MemberFactoryTest {
     @Test
     void testCreateMember_NotNull(){
         Member member = MemberFactory.createMember(
+                "A001",
                 "Stephanie Lewu",
                 "STOL230211",
                 "0665119940",

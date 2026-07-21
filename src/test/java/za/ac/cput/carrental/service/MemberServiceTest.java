@@ -1,7 +1,7 @@
 /*MemberServiceTest.java
 Author: Stephanie Tola Oluwafemi Lewu
 Student Number: 230211216
-07 July 2026
+20 July 2026
  */
 
 package za.ac.cput.carrental.service;
@@ -25,7 +25,7 @@ public class MemberServiceTest {
                "Stephanie Lewu",
                "AIJ44667899",
                "0665119940",
-               "Actice"
+               "ACTIVE"
        );
    }
 
@@ -56,7 +56,7 @@ public class MemberServiceTest {
 
     @Test
     void testGetAccountStatus() {
-        assertEquals("Active", member.getAccountStatus());
+        assertEquals("ACTIVE", member.getAccountStatus());
     }
 
     @Test
