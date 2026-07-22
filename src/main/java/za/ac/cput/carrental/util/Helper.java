@@ -65,7 +65,5 @@ public class Helper {
         return list != null && !list.isEmpty();
     }
 
-    public static String generateId() {
-        return UUID.randomUUID().toString();
-    }
+
 }
